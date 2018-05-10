@@ -5,7 +5,8 @@ nginx:
   file.managed:
     - source: salt://nginx/default
 
-nginx:
+nginxservice:
   service.running:
+    - name: nginx
     - watch:
       - file: /etc/nginx/sites-available/default
