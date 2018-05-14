@@ -1,0 +1,1 @@
+passwd: "minion1passwd"

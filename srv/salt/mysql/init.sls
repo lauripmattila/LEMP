@@ -3,9 +3,12 @@ debconf-utils:
 
 mysqlroot:
   debconf.set:
+    - template: jinja
+    - context:
+      passwd: {{ pillar.get('passwd', 'mysqldefault') }}
     - data:
-        'mysql-server/root_password': {'type': 'password', 'value': 'xeBee5roi1'}
-        'mysql-server/root_password_again': {'type': 'password', 'value': 'xeBee5roi1'}
+        'mysql-server/root_password': {'type': 'password', 'value': '{{ 'passwd' }}'}
+        'mysql-server/root_password_again': {'type': 'password', 'value': '{{ 'passwd' }}'}
     - require:
       - pkg: debconf-utils
 
